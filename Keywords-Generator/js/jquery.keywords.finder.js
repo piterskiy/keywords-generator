@@ -93,19 +93,32 @@
             for (i = 0; i < ks.length; i++) {
                 keywordsQuery[keywordsQuery.length] = ks[i];
 
-                var j = 0;
-                for (j = 0; j < 26; j++) {
-                    var chr = String.fromCharCode(97 + j);
-                    var currentx = ks[i] + ' ' + chr;
-                    keywordsQuery[keywordsQuery.length] = currentx;
-                    hashResults[currentx] = 1;
-                    for (k = 0; k < 26; k++) {
-                        var chr = String.fromCharCode(97 + k);
-                        var currentk = currentx + chr;
-                        keywordsQuery[keywordsQuery.length] = currentk;
-                        hashResults[currentk] = 1;
+                const alphabet = $('#alphabet').val().split('');
+                for (var index in alphabet) {
+                    var variant1 = ks[i] + ' ' + alphabet[index];
+                    hashResults[variant1] = 1;
+                    keywordsQuery[keywordsQuery.length] = variant1;
+
+                    for (var index in alphabet) {
+                        var variant2 = variant1 + alphabet[index];
+                        hashResults[variant2] = 1;
+                        keywordsQuery[keywordsQuery.length] = variant2;
                     }
                 }
+
+                // var j = 0;
+                // for (j = 0; j < 26; j++) {
+                //     var chr = String.fromCharCode(97 + j);
+                //     var currentx = ks[i] + ' ' + chr;
+                //     keywordsQuery[keywordsQuery.length] = currentx;
+                //     hashResults[currentx] = 1;
+                //     for (k = 0; k < 26; k++) {
+                //         var chr = String.fromCharCode(97 + k);
+                //         var currentk = currentx + chr;
+                //         keywordsQuery[keywordsQuery.length] = currentk;
+                //         hashResults[currentk] = 1;
+                //     }
+                // }
             }
             //document.getElementById("input").value = '';
             document.getElementById("search").value += "\r\n";

@@ -9,17 +9,30 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="css/datatables/css/responsive.bootstrap.min.css" rel="stylesheet" />
-    <link href="css/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
 
 </head>
 <body>
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="credits">
+                    <h1>Keywords Generator @ NoHate Edition</h1>
+                </div>
+            </div>
+        </div>
         <div class="jumbotron">
             <input id="gg-lang" type="hidden" value="en" />
             <div class="row panel-keyword">
                 <div class="col-xs-12">
                     <input id="search" type="text" class="form-control input-lg text-center" placeholder="Enter a keyword" aria-describedby="startjob">
+                </div>
+                <div class="col-xs-12">
+                    <div class="input-group">
+                            <input id="alphabet" type="text" class="form-control input-lg text-center" placeholder="Enter alphabet" aria-describedby="startjob" value="abcdefghijklmnopqrstuvwxyz">
+                            <span class="input-group-addon"><button class="btn btn-sm btn-primary" onclick="changeAlphabetToRus()">Рус</button></span>
+                    </div>
                 </div>
                 <div class="col-xs-12 text-center">
                     <label class="radio-inline">
@@ -163,13 +176,18 @@
         </footer>
     </div>
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/datatables/jquery.dataTables.js"></script>
-    <script src="js/DataTables/dataTables.buttons.js"></script>
-    <script src="js/DataTables/buttons.html5.js"></script>    
+    <script src="js/datatables/dataTables.buttons.js"></script>
+    <script src="js/datatables/buttons.html5.js"></script>    
     <script src="js/jquery.keywords.finder.js"></script>
     <script type="text/javascript">
 
         window.setInterval($().DoJob, 750);
+
+        function changeAlphabetToRus() {
+            $('#alphabet').val('абвгдеёжзийклмнопрстуфхцчшщъыьэюя');
+        }
 
         $("#startjob").on("click", function () {
             $(".hidden").removeClass("hidden");
@@ -186,5 +204,62 @@
         });
 
     </script>
+
+<div id="MethodModal2" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Method 2</h4>
+                </div>
+                <div class="modal-body">
+                    <p>We will scan your keyword and add two alphabet letters</p>
+                    <p>It will give 703 queries for Google Suggest (1 + 26 + 26 x 26)</p>
+                    <p>Exemple:</p>
+                    <ul>
+                        <li>keywords</li>
+                        <li>keywords a</li>
+                        <li>keywords aa</li>
+                        <li>keywords ab</li>
+                        <li>keywords ...</li>
+                        <li>keywords zy</li>
+                        <li>keywords zz</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div id="MethodModal1" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Method 2</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This method is suitable for niche keywords</p>
+                    <p>We will scan your keyword and add one alphabet letter (a to z)</p>
+                    <p>For each keywords found we will scan them by adding one alphabet letter (a to z)</p>
+                    <p>Exemple:</p>
+                    <ul>
+                        <li>keyword</li>
+                        <li>keyword a</li>
+                        <li>keyword analysis a</li>
+                        <li>keyword analysis b</li>
+                        <li>...</li>
+                        <li>keyword suggestion tool</li>
+                        <li>keyword suggestion tool a</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
